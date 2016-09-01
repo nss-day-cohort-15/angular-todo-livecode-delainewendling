@@ -11,7 +11,7 @@ app.config(function($routeProvider){
     .when('/items/list', {
       //U is captalized but r and l are not!
       templateUrl: 'partials/item-list.html',
-      controller: 'TodoCtrl'
+      controller: 'ItemListCtrl'
     })
     .when('/items/new', {
       templateUrl: 'partials/item-form.html',
