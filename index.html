@@ -14,13 +14,13 @@
   </div>
   <!-- TODO: Add a controller for our todo list -->
   <div ng-controller="TodoCtrl">
-    <div class="row">
-      <div class="col-xs-6 col-xs-offset-3">
+    <!-- <div class="row">
+      <div class="col-xs-6 col-xs-offset-3"> -->
         <!-- Let's call a js function from our HTML. wat? -->
-        <button class="col-xs-6 btn btn-success" ng-click="newItem()">New Item</button>
+       <!--  <button class="col-xs-6 btn btn-success" ng-click="newItem()">New Item</button>
         <button class="col-xs-6 btn btn-info" ng-click="allItems()"> All Items</button>
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
   </div>
   <!-- This is where we're going to inject our partials in and out using routing -->
   <div class="row">
@@ -42,6 +42,7 @@
 <script type="text/javascript" src="app/app.js"></script>
 <!-- Providers -->
 <script type="text/javascript" src="app/factories/ItemFactory.js"></script>
+<script type="text/javascript" src="app/factories/FilterFactory.js"></script>
 <!-- Controllers -->
 <script type="text/javascript" src="app/controllers/NavCtrl.js"></script>
 <script type="text/javascript" src="app/controllers/TodoCtrl.js"></script>
