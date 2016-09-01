@@ -10,15 +10,16 @@
       </button>
       <a class="navbar-brand" href="#">Todo App</a>
     </div>
-    <div class="col-xs-6 searchBox">
+    <!-- search -->
+    <div class="col-xs-6 searchBox" ng-show="isActive('/items/list')">
       <div class="input-group">
         <span class="input-group-btn">
           <button class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
         </span>
         <!-- TODO: Bind the input to our todo list. When we place ng-model directly on an input it gets added to the controller scope-->
-        <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText.search">
+        <input type="text" class="form-control" placeholder="Search tasks..." ng-model="searchText.search">
       </div>
-    </div>
+    </div> <!-- End search -->
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <!-- TODO: Use Angular to loop through nav items -->
