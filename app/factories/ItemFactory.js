@@ -10,11 +10,15 @@ app.factory("ItemStorage", ($q, $http, FirebaseURL)=>{
       $http.get(`${FirebaseURL}/items.json`)
       //Angular does the parsing of the object for you, just like AJAX or getJSON
       .success((itemObject)=>{
-        Object.keys(itemObject).forEach((key)=>{
-          itemObject[key].id = key;
-          items.push(itemObject[key]);
-        });
-        resolve(items);
+        if (itemObject !== null){
+          Object.keys(itemObject).forEach((key)=>{
+            itemObject[key].id = key;
+            items.push(itemObject[key]);
+          });
+          resolve(items);
+        } else {
+          resolve(items);
+        }
       })
       .error((error)=>{
         reject(error);
