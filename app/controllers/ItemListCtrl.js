@@ -21,15 +21,4 @@ app.controller("ItemListCtrl", function($scope, ItemStorage, SearchTermData){
     });
   };
 
-  //Create a function that edits that particular item
-  $scope.itemEdit = (itemId)=>{
-    ItemStorage.editItem(itemId)
-    .then((response)=>{
-      // ItemStorage.getItemList()
-      // .then((itemCollectionArr)=>{
-      //   $scopeitems = itemCollectionArr;
-      // });
-    });
-  };
-
 });

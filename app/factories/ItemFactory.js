@@ -59,7 +59,7 @@ app.factory("ItemStorage", ($q, $http, FirebaseURL, $location)=>{
         console.log("clicked on...", objFromFirebase);
         newTask = objFromFirebase;
         console.log("new task", newTask);
-        $location.path('/items/new');
+        $location.path('/items/edit');
         resolve(newTask);
       })
       .error((error)=>{
@@ -68,10 +68,11 @@ app.factory("ItemStorage", ($q, $http, FirebaseURL, $location)=>{
     });
   };
 
-  let putNewItem = (itemId)=>{
+  let putNewItem = (itemId, editItem)=>{
     return $q((resolve, reject)=>{
-      $http.put(`${FirebaseURL}/items/${itemId}.json`)
+      $http.put(`${FirebaseURL}/items/${itemId}.json`, JSON.stringify(editItem))
       .success((savedItem)=>{
+        $location.path('/items/list');
         console.log("successfully edited!");
       })
       .error((error)=>{

@@ -16,12 +16,4 @@ app.controller("ItemNewCtrl", function($scope, ItemStorage, $location){
       $location.url("/items/list");
     });
   };
-
-  $scope.saveNewItem = function(){
-    ItemStorage.putNewItem($scope.newTask)
-    .then(function(){
-      $location.path('./items/list');
-    })
-  };
-
 });
