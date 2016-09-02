@@ -3,5 +3,5 @@
 app.factory("SearchTermData", function(){
   return {
     search: ""
-  }
+  };
 });
