@@ -19,6 +19,10 @@ app.config(function($routeProvider){
       templateUrl: 'partials/item-form.html',
       controller: 'ItemNewCtrl'
     })
+    .when('/items/edit', {
+      templateUrl: 'partials/item-form.html',
+      controller: 'ItemEditCtrl'
+    })
     //:itemId stands in as a placeholder.
     .when('/items/view/:itemId', {
       templateUrl: 'partials/item-details.html',

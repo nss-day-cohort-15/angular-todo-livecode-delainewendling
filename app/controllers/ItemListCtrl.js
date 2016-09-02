@@ -10,15 +10,26 @@ app.controller("ItemListCtrl", function($scope, ItemStorage, SearchTermData){
     $scope.items = itemCollectionArr;
   });
 
-  //Create a function that deletes the 
+  //Create a function that deletes that item
   $scope.itemDelete = (itemId)=>{
     ItemStorage.deleteItem(itemId)
     .then((response)=>{
       ItemStorage.getItemList()
       .then ((itemCollectionArr)=>{
         $scope.items = itemCollectionArr;
-      })
+      });
     });
-  }
+  };
+
+  //Create a function that edits that particular item
+  $scope.itemEdit = (itemId)=>{
+    ItemStorage.editItem(itemId)
+    .then((response)=>{
+      // ItemStorage.getItemList()
+      // .then((itemCollectionArr)=>{
+      //   $scopeitems = itemCollectionArr;
+      // });
+    });
+  };
 
 });

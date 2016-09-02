@@ -27,5 +27,7 @@
     <input type="text" class="form-control" placeholder="brush chipper, monkey chow, the one ring" ng-model="newTask.dependencies"/>
   </div>
   <!-- TODO: bind this button to a function -->
-  <button class="btn btn-default" ng-click="addNewItem()">Submit</button>
+  <!-- Look up how to show something based on the path -->
+  <button class="btn btn-default" ng-click="saveNewItem()" ng-show="isActive">Save</button>
+  <button class="btn btn-default" ng-click="addNewItem()" ng-show="!isActive">Submit</button>
 </form>

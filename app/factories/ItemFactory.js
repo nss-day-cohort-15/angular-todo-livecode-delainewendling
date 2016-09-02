@@ -1,7 +1,7 @@
 "use strict";
 
 //$q is a library of promises. $http is the Angular way of doing ajax calls
-app.factory("ItemStorage", ($q, $http, FirebaseURL)=>{
+app.factory("ItemStorage", ($q, $http, FirebaseURL, $location)=>{
 
   let getItemList = function(){
     let items = [];
@@ -34,7 +34,7 @@ app.factory("ItemStorage", ($q, $http, FirebaseURL)=>{
         })
         .error((error)=>{
           reject(error);
-        })
+        });
     });
   };
 
@@ -47,9 +47,38 @@ app.factory("ItemStorage", ($q, $http, FirebaseURL)=>{
       })
       .error((error)=>{
         reject(error);
-      })
-    })
+      });
+    });
   };
 
-  return {getItemList, postNewItem, deleteItem};
+  let editItem = (itemId)=>{
+    return $q((resolve, reject)=>{
+      let newTask = {};
+      $http.get(`${FirebaseURL}/items/${itemId}.json`)
+      .success((objFromFirebase)=>{
+        console.log("clicked on...", objFromFirebase);
+        newTask = objFromFirebase;
+        console.log("new task", newTask);
+        $location.path('/items/new');
+        resolve(newTask);
+      })
+      .error((error)=>{
+        reject(error);
+      });
+    });
+  };
+
+  let putNewItem = (itemId)=>{
+    return $q((resolve, reject)=>{
+      $http.put(`${FirebaseURL}/items/${itemId}.json`)
+      .success((savedItem)=>{
+        console.log("successfully edited!");
+      })
+      .error((error)=>{
+        reject(error);
+      });
+    });
+  };
+
+  return {getItemList, postNewItem, deleteItem, editItem, putNewItem};
 });
