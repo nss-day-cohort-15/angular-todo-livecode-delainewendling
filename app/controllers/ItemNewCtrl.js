@@ -1,6 +1,9 @@
 "use strict";
 
 app.controller("ItemNewCtrl", function($scope, ItemStorage, $location){
+
+  $scope.selectedPath = $location.path() === '/items/new';
+
   $scope.newTask = {
     assignedTo: "",
     dependencies: "",

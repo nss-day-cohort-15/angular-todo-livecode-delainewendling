@@ -3,11 +3,14 @@
 app.controller("NavCtrl", function($scope, SearchTermData, $location){
     //Since the scope we're in is NavCtrl, we have access to navItems inside of the HTML where we've declared the ng-controller (which is inside the nav tags)
     //$location is a predefined provider in Angular. You can find different things using location
-    $scope.isActive = (viewLocation) => viewLocation === $location.path();
     $scope.searchText = SearchTermData;
-    $scope.navItems = [
-        {name: "Logout", url: '#/logout'},
-        {name: "All Items", url: '#/items/list'},
-        {name: "New Items", url: '#/items/new'}
-    ];
+    // $scope.navItems = [
+    //     //$parent is going to use a higher scope that it will inherit from.
+    //     {name: "Login", url: '#/login', showState: "!$parent.isLoggedIn"},
+    //     {name: "Logout", url: '#/logout', showState: "$parent.isLoggedIn"},
+    //     {name: "All Items", url: '#/items/list', showState: "$parent.isLoggedIn"},
+    //     {name: "New Items", url: '#/items/new', showState: "$parent.isLoggedIn"}
+    // ];
+
+    $scope.isActive = (viewLocation) => viewLocation === $location.path();
 });

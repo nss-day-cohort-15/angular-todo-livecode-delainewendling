@@ -1,6 +1,9 @@
 "use strict";
 
 app.controller("ItemEditCtrl", function($scope, ItemStorage, $location, $routeParams){
+
+  $scope.selectedEdit = $location.path() !== '/items/new';
+
   $scope.newTask = {
     assignedTo: "",
     dependencies: "",
@@ -26,8 +29,8 @@ app.controller("ItemEditCtrl", function($scope, ItemStorage, $location, $routePa
   $scope.saveNewItem = function(){
     ItemStorage.putNewItem($routeParams.itemId, $scope.newTask)
     .then(function(editedItem){
-      resolve(editedItem);
-    })
+      $location.path('/items/list');
+    });
   };
 
 });

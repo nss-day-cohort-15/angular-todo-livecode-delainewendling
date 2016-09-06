@@ -10,6 +10,14 @@ var app = angular.module("TodoApp", ["ngRoute"])
 //We get routeProvider from ngRoute
 app.config(function($routeProvider){
   $routeProvider
+    .when('/', {
+      templateUrl: 'partials/login.html',
+      controller: 'LoginCtrl'
+    })
+    .when('/login', {
+      templateUrl: 'partials/login.html',
+      controller: 'LoginCtrl'
+    })
     .when('/items/list', {
       //U is captalized but r and l are not!
       templateUrl: 'partials/item-list.html',
@@ -30,3 +38,19 @@ app.config(function($routeProvider){
     })
     .otherwise('/items/list');
 });
+
+//Initializes Firebase right away
+app.run(($location, FBCreds)=>{
+  let creds = FBCreds;
+  let authConfig = {
+    apiKey: creds.key,
+    authDomain: creds.authDomain
+  };
+
+  firebase.initializeApp(authConfig);
+
+});
+
+
+
+

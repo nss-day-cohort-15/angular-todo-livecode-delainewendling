@@ -51,29 +51,13 @@ app.factory("ItemStorage", ($q, $http, FirebaseURL, $location)=>{
     });
   };
 
-  let editItem = (itemId)=>{
-    return $q((resolve, reject)=>{
-      let newTask = {};
-      $http.get(`${FirebaseURL}/items/${itemId}.json`)
-      .success((objFromFirebase)=>{
-        console.log("clicked on...", objFromFirebase);
-        newTask = objFromFirebase;
-        console.log("new task", newTask);
-        $location.path('/items/edit');
-        resolve(newTask);
-      })
-      .error((error)=>{
-        reject(error);
-      });
-    });
-  };
 
   let putNewItem = (itemId, editItem)=>{
     return $q((resolve, reject)=>{
       $http.put(`${FirebaseURL}/items/${itemId}.json`, JSON.stringify(editItem))
       .success((savedItem)=>{
-        $location.path('/items/list');
         console.log("successfully edited!");
+        resolve(savedItem);
       })
       .error((error)=>{
         reject(error);
@@ -81,5 +65,5 @@ app.factory("ItemStorage", ($q, $http, FirebaseURL, $location)=>{
     });
   };
 
-  return {getItemList, postNewItem, deleteItem, editItem, putNewItem};
+  return {getItemList, postNewItem, deleteItem, putNewItem};
 });

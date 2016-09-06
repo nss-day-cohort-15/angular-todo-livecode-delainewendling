@@ -28,6 +28,6 @@
   </div>
   <!-- TODO: bind this button to a function -->
   <!-- Look up how to show something based on the path -->
-  <button class="btn btn-default" ng-click="saveNewItem()">Save</button>
-  <button class="btn btn-default" ng-click="addNewItem()">Submit</button>
+  <button class="btn btn-default" ng-click="saveNewItem()" ng-if="selectedEdit">Save</button>
+  <button class="btn btn-default" ng-click="addNewItem()" ng-if="selectedPath">Submit</button>
 </form>
