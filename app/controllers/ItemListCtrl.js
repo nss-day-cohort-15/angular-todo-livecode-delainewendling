@@ -5,9 +5,13 @@ app.controller("ItemListCtrl", function($scope, ItemStorage, SearchTermData){
 
   $scope.searchText = SearchTermData;
 
-  ItemStorage.getItemList()
-  .then((itemCollectionArr)=>{
-    $scope.items = itemCollectionArr;
+  firebase.auth().onAuthStateChanged(function(user){
+    if (user){
+      ItemStorage.getItemList()
+      .then((itemCollectionArr)=>{
+        $scope.items = itemCollectionArr;
+      })
+    }
   });
 
   //Create a function that deletes that item

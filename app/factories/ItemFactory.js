@@ -3,11 +3,13 @@
 //$q is a library of promises. $http is the Angular way of doing ajax calls
 app.factory("ItemStorage", ($q, $http, FirebaseURL, $location)=>{
 
+
   let getItemList = function(){
+    let userId = firebase.auth().currentUser.uid;
     let items = [];
     //This is the Angular way of doing promises
     return $q((resolve, reject)=>{
-      $http.get(`${FirebaseURL}/items.json`)
+      $http.get(`${FirebaseURL}/items.json?orderBy=\"uid\"&equalTo=\"${userId}\"`)
       //Angular does the parsing of the object for you, just like AJAX or getJSON
       .success((itemObject)=>{
         if (itemObject !== null){
