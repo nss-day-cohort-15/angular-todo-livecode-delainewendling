@@ -14,7 +14,7 @@ app.controller("ItemEditCtrl", function($scope, ItemStorage, $location, $routePa
   };
 
   $scope.itemEdit = function(){
-    ItemStorage.getItemList()
+    ItemStorage.getItemList($scope.$parent.getUser())
     .then((itemCollectionArr)=>{
       $scope.items = itemCollectionArr;
       $scope.newTask = $scope.items.filter(function(item){

@@ -4,8 +4,8 @@
 app.factory("ItemStorage", ($q, $http, FirebaseURL, $location)=>{
 
 
-  let getItemList = function(){
-    let userId = firebase.auth().currentUser.uid;
+  let getItemList = function(userId){
+    // let userId = firebase.auth().currentUser.uid;
     let items = [];
     //This is the Angular way of doing promises
     return $q((resolve, reject)=>{
@@ -40,6 +40,19 @@ app.factory("ItemStorage", ($q, $http, FirebaseURL, $location)=>{
     });
   };
 
+  let patchNewItem = (newValue, itemId)=>{
+    console.log("new value", newValue)
+    return $q((resolve, reject)=>{
+      $http.patch(`${FirebaseURL}/items/${itemId}.json`, JSON.stringify({isCompleted: newValue}))
+      .success((newObjFromFirebase)=>{
+        resolve(newObjFromFirebase);
+      })
+      .error((error)=>{
+        reject(error);
+      });
+    });
+  };
+
   let deleteItem = (itemId)=>{
     return $q((resolve, reject)=>{
       $http.delete(`${FirebaseURL}/items/${itemId}.json`)
@@ -67,5 +80,5 @@ app.factory("ItemStorage", ($q, $http, FirebaseURL, $location)=>{
     });
   };
 
-  return {getItemList, postNewItem, deleteItem, putNewItem};
+  return {getItemList, postNewItem, deleteItem, putNewItem, patchNewItem};
 });

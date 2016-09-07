@@ -26,6 +26,7 @@
     <label>Dependencies</label>
     <input type="text" class="form-control" placeholder="brush chipper, monkey chow, the one ring" ng-model="newTask.dependencies"/>
   </div>
+  <div>Done? <input type="checkbox" name="" ng-model="newTask.isCompleted" ng-checked="{{newTask.isCompleted}}"/></div>
   <!-- TODO: bind this button to a function -->
   <!-- Look up how to show something based on the path -->
   <button class="btn btn-default" ng-click="saveNewItem()" ng-if="selectedEdit">Save</button>

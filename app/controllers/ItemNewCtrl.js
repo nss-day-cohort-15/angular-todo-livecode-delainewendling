@@ -2,8 +2,6 @@
 
 app.controller("ItemNewCtrl", function($scope, ItemStorage, $location){
 
-  let user = firebase.auth().currentUser;
-
   $scope.selectedPath = $location.path() === '/items/new';
 
   $scope.newTask = {
@@ -13,7 +11,7 @@ app.controller("ItemNewCtrl", function($scope, ItemStorage, $location){
     isCompleted: false,
     task: "",
     urgency: "medium",
-    uid: user.uid
+    uid: $scope.$parent.getUser()
   };
 
   $scope.addNewItem = function(){

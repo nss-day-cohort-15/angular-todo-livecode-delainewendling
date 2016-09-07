@@ -6,9 +6,9 @@
   <div class="panel panel-default">
     <div class="panel-body">
     <!-- Every item that we loop over gains its own scope -->
-      <div class="col-xs-1"><input type="checkbox" name="" ng-checked="{{item.isCompleted}}"/></div>
+      <div class="col-xs-1"><input type="checkbox" name="" ng-model="item.isCompleted" ng-checked="{{item.isCompleted}}" ng-click="updateIsCompleted(item.isCompleted, item.id)"/></div>
       <!-- When your browser loads it searches for links because it wants to make sure images and links are ready when the DOM loads. This is a companion to ng-src and it makes the DOM wait to go get the Angular information before populating the link tag. Angular works well with links and we can uniquely identify -->
-      <div class="col-xs-5"><a ng-href="#/items/view/{{item.id}}">{{item.task}}</a></div>
+      <div class="col-xs-5"><a ng-href="#/items/view/{{item.id}}" class="done-{{item.isCompleted}}">{{item.task}}</a></div>
       <div class="col-xs-2">{{item.dueDate}}</div>
       <div class="col-xs-2">{{item.assignedTo}}</div>
       <div class="col-xs-1"><a ng-href="#/items/edit/{{item.id}}">Edit</a></div>
