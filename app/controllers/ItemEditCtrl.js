@@ -33,4 +33,16 @@ app.controller("ItemEditCtrl", function($scope, ItemStorage, $location, $routePa
     });
   };
 
+  $scope.updateIsCompleted = (completedValue, itemId)=>{
+    console.log("Is this running?");
+    console.log("completed value", completedValue);
+    console.log("item id", itemId);
+    ItemStorage.patchNewItem(completedValue, itemId)
+    .then((response)=>{
+      ItemStorage.getItemList(user)
+      .then((itemCollectionArr)=>{
+        $scope.items = itemCollectionArr;
+      })
+    })
+  }
 });

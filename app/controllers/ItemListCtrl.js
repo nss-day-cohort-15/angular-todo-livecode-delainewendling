@@ -37,8 +37,8 @@ app.controller("ItemListCtrl", function($scope, ItemStorage, SearchTermData){
       ItemStorage.getItemList(user)
       .then((itemCollectionArr)=>{
         $scope.items = itemCollectionArr;
-      })
-    })
-  }
+      });
+    });
+  };
 
 });
